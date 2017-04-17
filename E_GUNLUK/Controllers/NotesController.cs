@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using E_GUNLUK.Models;
+using Microsoft.AspNet.Identity;
 
 namespace E_GUNLUK.Controllers
 {
@@ -36,6 +37,7 @@ namespace E_GUNLUK.Controllers
         }
 
         // GET: Notes/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -46,14 +48,21 @@ namespace E_GUNLUK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NoteId,Title,NoteText,NoteDate,PubOrPvt")] Note note)
+        public ActionResult Create(NotesViewModel viewModel)
         {
-            if (ModelState.IsValid)
-            {
+            var userid = User.Identity.GetUserId();
+            var user = db.Users.Single(u => u.Id == userid);
+            var note = new Note {
+                NoteTaker = user,
+                NoteDate = DateTime.Now,
+                Title = viewModel.Title,
+                NoteText = viewModel.NoteText,
+                PubOrPvt = viewModel.PubOrPvt
+            };
                 db.notes.Add(note);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+            
 
             return View(note);
         }
