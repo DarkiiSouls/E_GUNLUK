@@ -35,7 +35,7 @@ namespace E_GUNLUK.Controllers
             }
             return View(note);
         }
-        [HttpGet]
+        /*
         public ActionResult Comment(int noteid)
         {
             var newComment = new Comments();
@@ -43,8 +43,9 @@ namespace E_GUNLUK.Controllers
 
             return View(newComment);
         }
+        */
         [HttpPost]
-        public ActionResult Comment(NotesCommentsViewModel viewModel,int noteid)
+        public ActionResult Comment(NotesCommentsViewModel viewModel,int id)
         {
             var userid = User.Identity.GetUserId();
             
@@ -54,7 +55,7 @@ namespace E_GUNLUK.Controllers
                 commentator = user,
                 commentDate = DateTime.Now,
                 theComment = viewModel.commentsviewmodel.theComment,
-                whichNote = noteid
+                whichNote = id
             };
             db.comments.Add(comment);
             db.SaveChanges();
