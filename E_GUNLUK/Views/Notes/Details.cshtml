@@ -57,10 +57,13 @@
 
     @{Html.RenderAction("Comment", "Notes", new { id = Model.NoteId }); }
 
-    'System.Web.Mvc.HttpHandlerUtil+ServerExecuteHttpHandlerAsyncWrapper'.'
+
+    @{Html.RenderAction("CommentsList", "Notes", new { id = Model.NoteId }); }
+
+
+
    
     <div>
-        ArgumentException: The parameters dictionary contains a null entry for parameter 'noteid' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.ActionResult Comment(Int32)' in 'E_GUNLUK.Controllers.NotesController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
 
 
     </div>

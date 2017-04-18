@@ -15,13 +15,13 @@ namespace E_GUNLUK.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Notes
+        // HOMEPAGE
         public ActionResult Index()
         {
             return View(db.notes.ToList());
         }
 
-        // GET: Notes/Details/5
+         // /Notes/Details/id
         public ActionResult Details(int? id)
         {
             Note note = db.notes.Find(id);
@@ -35,42 +35,47 @@ namespace E_GUNLUK.Controllers
             }
             return View(note);
         }
-        /*
-        public ActionResult Comment(int noteid)
+
+        // Create Comment ( Partial View )
+        [HttpGet] //GET
+        public ActionResult Comment(int id)
         {
             var newComment = new Comments();
-            newComment.whichNote = noteid; // this will be sent from the ArticleDetails View, hold on :).
+            newComment.whichNote = id; // This would appear in Details.cshtml
 
             return View(newComment);
         }
-        */
-        [HttpPost]
-        public ActionResult Comment(NotesCommentsViewModel viewModel,int id)
+        
+        [HttpPost] //POST
+        public ActionResult Comment(Comments viewModel, int id)
         {
-            var userid = User.Identity.GetUserId();
-            
+            var userid = User.Identity.GetUserId();            
             var user = db.Users.Single(u => u.Id == userid);
+
             var comment = new Comments
             {
                 commentator = user,
                 commentDate = DateTime.Now,
-                theComment = viewModel.commentsviewmodel.theComment,
+                theComment = viewModel.theComment,
                 whichNote = id
             };
             db.comments.Add(comment);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return View(comment);
         }
-        // GET: Notes/Create
+
+        public ActionResult CommentsList()
+        {
+            var commentlist = db.comments.ToList();
+            return View(commentlist);
+        }
+        //  Notes/Create ** NEW NOTE **
         [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Notes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(NotesCommentsViewModel viewModel)
@@ -87,12 +92,10 @@ namespace E_GUNLUK.Controllers
                 db.notes.Add(note);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            
 
-            return View(note);
         }
 
-        // GET: Notes/Edit/5
+        //  Notes/Edit/id
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -107,23 +110,21 @@ namespace E_GUNLUK.Controllers
             return View(note);
         }
 
-        // POST: Notes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Notes/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "NoteId,Title,NoteText,NoteDate,PubOrPvt")] Note note)
+        public ActionResult Edit([Bind(Include = "NoteId,Title,NoteText,PubOrPvt")] Note note)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(note).State = EntityState.Modified;
-                db.SaveChanges();
+               db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(note);
         }
 
-        // GET: Notes/Delete/5
+        // GET: Notes/Delete/id
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -138,7 +139,7 @@ namespace E_GUNLUK.Controllers
             return View(note);
         }
 
-        // POST: Notes/Delete/5
+        // POST: Notes/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
