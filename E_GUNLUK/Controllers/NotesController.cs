@@ -24,18 +24,42 @@ namespace E_GUNLUK.Controllers
         // GET: Notes/Details/5
         public ActionResult Details(int? id)
         {
+            Note note = db.notes.Find(id);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Note note = db.notes.Find(id);
             if (note == null)
             {
                 return HttpNotFound();
             }
             return View(note);
         }
+        [HttpGet]
+        public ActionResult Comment(int noteid)
+        {
+            var newComment = new Comments();
+            newComment.whichNote = noteid; // this will be sent from the ArticleDetails View, hold on :).
 
+            return View(newComment);
+        }
+        [HttpPost]
+        public ActionResult Comment(NotesCommentsViewModel viewModel,int noteid)
+        {
+            var userid = User.Identity.GetUserId();
+            
+            var user = db.Users.Single(u => u.Id == userid);
+            var comment = new Comments
+            {
+                commentator = user,
+                commentDate = DateTime.Now,
+                theComment = viewModel.commentsviewmodel.theComment,
+                whichNote = noteid
+            };
+            db.comments.Add(comment);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         // GET: Notes/Create
         [Authorize]
         public ActionResult Create()
@@ -48,16 +72,16 @@ namespace E_GUNLUK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(NotesViewModel viewModel)
+        public ActionResult Create(NotesCommentsViewModel viewModel)
         {
             var userid = User.Identity.GetUserId();
             var user = db.Users.Single(u => u.Id == userid);
             var note = new Note {
                 NoteTaker = user,
                 NoteDate = DateTime.Now,
-                Title = viewModel.Title,
-                NoteText = viewModel.NoteText,
-                PubOrPvt = viewModel.PubOrPvt
+                Title = viewModel.noteviewmodel.Title,
+                NoteText = viewModel.noteviewmodel.NoteText,
+                PubOrPvt = viewModel.noteviewmodel.PubOrPvt
             };
                 db.notes.Add(note);
                 db.SaveChanges();

@@ -48,3 +48,17 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.NoteId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<div class="">
+    <h4>
+        Comments
+    </h4>
+
+
+    @{Html.RenderAction("Comment", "Notes", Model.NoteId); }
+
+   
+    <div>
+  
+
+    </div>
+</div>
