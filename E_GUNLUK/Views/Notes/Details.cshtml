@@ -9,62 +9,31 @@
 <div>
     <h4>Note</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model=>model.NoteId)
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+            <h2>@Html.DisplayFor(model => model.Title)</h2>
+            <span class="glyphicon-time">@Html.DisplayFor(model => model.NoteDate)</span>
+            <p>@Html.DisplayFor(model => model.NoteText)</p>
+            <span>Privacy: @Html.DisplayFor(model => model.PubOrPvt)</span>
+           
+    <hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NoteText)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NoteText)
-        </dd>
+    <h4>
+        Comments
+    </h4>
+<div>
+    @Html.Action("Comment", "Notes", new { id = Model.NoteId })
+    @Html.Action("CommentsList", "Notes", new { id = Model.NoteId })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NoteDate)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NoteDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PubOrPvt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PubOrPvt)
-        </dd>
-
-    </dl>
+</div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.NoteId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-<div class="">
-    <h4>
-        Comments
-    </h4>
-
-
-    @{Html.RenderAction("Comment", "Notes", new { id = Model.NoteId }); }
-
-
-    @{Html.RenderAction("CommentsList", "Notes", new { id = Model.NoteId }); }
 
 
 
-   
-    <div>
 
 
-    </div>
-</div>

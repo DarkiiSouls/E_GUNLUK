@@ -1,7 +1,14 @@
 ﻿@model E_GUNLUK.Models.Comments
 
+@{
+    Layout = null;
+}
+
 @using (@Html.BeginForm())
- {
+
+{
+    @Html.AntiForgeryToken()
+
 <h4>Add your comment</h4>
 <div>
     @Html.TextAreaFor(model => model.theComment)

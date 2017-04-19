@@ -1,12 +1,24 @@
 ﻿@model IEnumerable<E_GUNLUK.Models.Comments>
 
+@{
+    Layout = null;
+}
 <div>
-    @foreach(var i in Model)
-    {
+    @{if (Model == null)
+        {
+            return;
+        }
+        
+        foreach (var i in Model)
+        {
         <div>
             @i.commentator<br />
             @i.commentDate<br />
             <p>@i.theComment</p>
+            
         </div>
-    }
+                }
+            }
+        
+
 </div>

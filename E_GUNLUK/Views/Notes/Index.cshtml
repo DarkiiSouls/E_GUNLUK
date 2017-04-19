@@ -9,43 +9,24 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NoteText)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NoteDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PubOrPvt)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
+
+
+
+@foreach (var item in Model)
+{
+
+    <div class="col-md-3 ">
+        <h3><a href="/Notes/Details/@item.NoteId">@Html.DisplayFor(modelItem => item.Title)</a></h3><span>Published In: @Html.DisplayFor(modelItem => item.NoteDate)| Privacy: @Html.DisplayFor(modelItem => item.PubOrPvt)</span>
+
+        <p>
             @Html.DisplayFor(modelItem => item.NoteText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoteDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PubOrPvt)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.NoteId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.NoteId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.NoteId })
-        </td>
-    </tr>
+        </p>
+        @Html.ActionLink("Edit", "Edit", new { id = item.NoteId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.NoteId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.NoteId })
+
+    </div>
 }
 
-</table>
+

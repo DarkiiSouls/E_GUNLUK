@@ -33,11 +33,16 @@ namespace E_GUNLUK.Controllers
             {
                 return HttpNotFound();
             }
+            ////List<Comments> commentlist = db.comments.ToList();
+            
+            //ViewBag.comments = commentlist;
+
             return View(note);
         }
 
         // Create Comment ( Partial View )
         [HttpGet] //GET
+        
         public ActionResult Comment(int id)
         {
             var newComment = new Comments();
@@ -47,6 +52,8 @@ namespace E_GUNLUK.Controllers
         }
         
         [HttpPost] //POST
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Comment(Comments viewModel, int id)
         {
             var userid = User.Identity.GetUserId();            
@@ -64,10 +71,39 @@ namespace E_GUNLUK.Controllers
             return View(comment);
         }
 
-        public ActionResult CommentsList()
+        public ActionResult CommentsList(int id)
         {
-            var commentlist = db.comments.ToList();
-            return View(commentlist);
+            var commentlist = db.comments.Where(m => m.whichNote == id).ToList();
+            if (commentlist == null)
+            {
+                return View("No comments are available!");
+            }
+           
+                foreach (var item in commentlist)
+                {
+
+                    // var query = db.comments.Single(m=> m.whichNote == id);
+             
+                     if (item.whichNote == id)
+                    {
+                        return View(commentlist);
+                    }
+
+
+                }
+            
+            /*
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+            }
+            */
+            return View();
         }
         //  Notes/Create ** NEW NOTE **
         [Authorize]
