@@ -265,6 +265,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\build\css\custom.css" />
+    <Content Include="Scripts\build\css\custom.min.css" />
+    <Content Include="Scripts\build\css\maps\jquery-jvectormap-2.0.3.css" />
+    <Content Include="Scripts\build\js\custom.js" />
+    <Content Include="Scripts\build\js\custom.min.js" />
+    <Content Include="Scripts\build\js\datepicker\daterangepicker.js" />
+    <Content Include="Scripts\build\js\moment\moment.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -319,6 +326,7 @@
     <Content Include="Views\Notes\CommentsList_2.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Notes\CommentsList.cshtml" />
+    <Content Include="Views\Notes\Like.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
