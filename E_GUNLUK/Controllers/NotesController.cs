@@ -40,71 +40,6 @@ namespace E_GUNLUK.Controllers
             return View(note);
         }
 
-        // Create Comment ( Partial View )
-        [HttpGet] //GET
-        
-        public ActionResult Comment(int id)
-        {
-            var newComment = new Comments();
-            newComment.whichNote = id; // This would appear in Details.cshtml
-
-            return View(newComment);
-        }
-        
-        [HttpPost] //POST
-        [Authorize]
-        [ValidateAntiForgeryToken]
-        public ActionResult Comment(Comments viewModel, int id)
-        {
-            var userid = User.Identity.GetUserId();            
-            var user = db.Users.Single(u => u.Id == userid);
-
-            var comment = new Comments
-            {
-                commentator = user,
-                commentDate = DateTime.Now,
-                theComment = viewModel.theComment,
-                whichNote = id
-            };
-            db.comments.Add(comment);
-            db.SaveChanges();
-            return View(comment);
-        }
-
-        public ActionResult CommentsList(int id)
-        {
-            var commentlist = db.comments.Where(m => m.whichNote == id).ToList();
-            if (commentlist == null)
-            {
-                return View("No comments are available!");
-            }
-           
-                foreach (var item in commentlist)
-                {
-
-                    // var query = db.comments.Single(m=> m.whichNote == id);
-             
-                     if (item.whichNote == id)
-                    {
-                        return View(commentlist);
-                    }
-
-
-                }
-            
-            /*
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-
-            }
-            */
-            return View();
-        }
         //  Notes/Create ** NEW NOTE **
         [Authorize]
         public ActionResult Create()
@@ -134,14 +69,23 @@ namespace E_GUNLUK.Controllers
         //  Notes/Edit/id
         public ActionResult Edit(int? id)
         {
+            var userid = User.Identity.GetUserId();
+            var user = db.Users.Single(u => u.Id == userid);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Note note = db.notes.Find(id);
+            //db.notes.FirstOrDefault(n=>n.NoteTaker.Id==user.Id);
+            
             if (note == null)
             {
                 return HttpNotFound();
+            }
+            else if(user!=note.NoteTaker)
+            {
+                return PartialView("~/Views/Notes/NotAuthorized.cshtml", null);
             }
             return View(note);
         }

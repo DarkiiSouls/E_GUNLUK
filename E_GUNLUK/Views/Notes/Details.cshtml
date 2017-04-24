@@ -17,13 +17,15 @@
            
     <hr />
 
+    @Html.Action("Like", "Likes", new { id = Model.NoteId })
+
 
     <h4>
         Comments
     </h4>
 <div>
-    @Html.Action("Comment", "Notes", new { id = Model.NoteId })
-    @Html.Action("CommentsList", "Notes", new { id = Model.NoteId })
+    @Html.Action("Comment", "Comments", new { id = Model.NoteId })
+    @Html.Action("CommentsList", "Comments", new { id = Model.NoteId })
 
 
 </div>

@@ -1,0 +1,20 @@
+﻿@model E_GUNLUK.Models.Likes
+    @{ 
+        Layout = null;
+    }
+
+
+@using (@Html.BeginForm())
+
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Like" action="@Url.Action("Like", "Likes")" class="btn btn-default" />
+</div>
+
+</div>
+
+}
+
