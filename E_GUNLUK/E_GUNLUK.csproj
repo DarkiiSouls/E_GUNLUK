@@ -331,7 +331,6 @@
     <Content Include="Views\Notes\Like.cshtml" />
     <Content Include="Views\Likes\Like.cshtml" />
     <Content Include="Views\Notes\NotAuthorized.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\tinymce_jquery_full.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
