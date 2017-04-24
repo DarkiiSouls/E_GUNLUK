@@ -11,7 +11,6 @@ namespace E_GUNLUK.Models
     {
         public ApplicationUser NoteTaker { get; set; }
         public string Title { get; set; }
-        [UIHint("tinymce_jquery_full"),AllowHtml]
         public string NoteText { get; set; }
         public bool PubOrPvt { get; set; }
 
