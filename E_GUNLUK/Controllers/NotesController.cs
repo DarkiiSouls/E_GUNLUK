@@ -60,6 +60,7 @@ namespace E_GUNLUK.Controllers
                 NoteText = viewModel.noteviewmodel.NoteText,
                 PubOrPvt = viewModel.noteviewmodel.PubOrPvt
             };
+                //ViewBag.HtmlContent = viewModel.noteviewmodel.NoteText;
                 db.notes.Add(note);
                 db.SaveChanges();
                 return RedirectToAction("Index");
