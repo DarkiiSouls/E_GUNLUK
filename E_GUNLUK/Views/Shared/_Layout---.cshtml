@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>eGunluk </title>
+    <link href="../../Scripts/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../Scripts/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../Scripts/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="../../Scripts/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="../../Scripts/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="../../Scripts/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <link href="../../Scripts/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="../../Scripts/build/css/custom.min.css" rel="stylesheet">
+    <style>
+        #notbutton {
+            position: absolute;
+            top: 10px;
+            right: 0px;
+        }
+
+        #search {
+            position: absolute;
+            top: 10px;
+            right: 90px;
+        }
+
+        #anabutton {
+            left: 200px;
+            right: 200px;
+        }
+        #a{
+            height:55px;
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="/" class="site_title"><i class="fa fa-life-ring"></i> <span>eGunluk</span></a>
+                    </div>
+                    <div class="clearfix"></div>
+           
+                    <br />
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Notes", "Index", "Notes")</li>
+                                <li>@Html.ActionLink("Create", "Create", "Notes")</li>
+                                @{
+                                    if (User.IsInRole("Admin"))
+                                    {
+                                        <li>@Html.ActionLink("Admin Panel", "Index", "Users")</li>
+                                    }
+                                }
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="top_nav" >
+                <div class="nav_menu" id="a">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                           @Html.Partial("_LoginPartial")
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>               
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+            <footer>
+                <div class="pull-right">
+                    eGunluk - Powered and Designed by <a href="http://zeyosoft.com">ZeyoSoft</a>
+                </div>
+
+                <div class="clearfix"></div>
+            </footer>
+        </div>
+    </div>
+    <script src="../../Scripts/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../../Scripts/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../Scripts/vendors/fastclick/lib/fastclick.js"></script>
+    <script src="../../Scripts/vendors/nprogress/nprogress.js"></script>
+    <script src="../../Scripts/vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="../../Scripts/vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="../../Scripts/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="../../Scripts/vendors/iCheck/icheck.min.js"></script>
+    <script src="../../Scripts/vendors/skycons/skycons.js"></script>
+    <script src="../../Scripts/vendors/Flot/jquery.flot.js"></script>
+    <script src="../../Scripts/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../../Scripts/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../../Scripts/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../../Scripts/vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="../../Scripts/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../../Scripts/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../../Scripts/vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="../../Scripts/vendors/DateJS/build/date.js"></script>
+    <script src="../../Scripts/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../../Scripts/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../../Scripts/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="../../Scripts/vendors/moment/min/moment.min.js"></script>
+    <script src="../../Scripts/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../../Scripts/build/js/custom.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

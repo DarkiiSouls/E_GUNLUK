@@ -1,143 +1,246 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE HTML>
 <html>
 <head>
-    <title>@Page.Title</title>
     @RenderSection("head", required: false)
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>eGunluk </title>
-    <link href="../../Scripts/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../Scripts/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../../Scripts/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <link href="../../Scripts/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <link href="../../Scripts/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <link href="../../Scripts/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
-    <link href="../../Scripts/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    <link href="../../Scripts/build/css/custom.min.css" rel="stylesheet">
-    <style>
-        #notbutton {
-            position: absolute;
-            top: 10px;
-            right: 0px;
-        }
 
-        #search {
-            position: absolute;
-            top: 10px;
-            right: 90px;
-        }
-
-        #anabutton {
-            left: 200px;
-            right: 200px;
-        }
-        #a{
-            height:55px;
-        }
-    </style>
-
-
-
-
-
-
-
-
-
+<title>E-Gunluk | </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Business_Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="~/Content/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href="~/Content/css/style.css" rel='stylesheet' type='text/css' />	
+<script src="~/Content/js/jquery-1.11.1.min.js"></script>
+<script src="~/Content/js/bootstrap.min.js"></script>
 </head>
-<body class="nav-md">
-    <div class="container body">
-        <div class="main_container">
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a href="/" class="site_title"><i class="fa fa-life-ring"></i> <span>eGunluk</span></a>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="profile clearfix">
-                        <div class="profile_pic">
-                            <img src="../../images/UserImages/user.png" alt="..." class="img-circle profile_img">
-                        </div>
-                        <div class="profile_info">
-                            <span>Hoşgeldiniz</span>
-                            <h2>User Ad-Soyad</h2>
-                        </div>
-                    </div>
-                    <br />
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                        <div class="menu_section">
-                            <h3>General</h3>
-                            <ul class="nav side-menu">
-                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                <li>@Html.ActionLink("About", "About", "Home")</li>
-                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                                <li>@Html.ActionLink("Notes", "Index", "Notes")</li>
-                                <li>@Html.ActionLink("Create", "Create", "Notes")</li>
-                                <li>@Html.Partial("_LoginPartial")
-</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="top_nav" >
-                <div class="nav_menu" id="a">
-                    <nav>
-                        <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                        </div>
-                        <ul class="nav navbar-nav navbar-right">
-                           
-                            <li>
-                                <button type="button" class="btn btn-round btn-default" id="notbutton" onclick="window.location.href = '../Notes/Create'">Not Ekle</button>
-                            </li>
-                            <li>
-                                <button type="button" class="btn btn-round btn-default" id="search" onclick="window.location.href = '../Home/Search'">Search</button>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <div class="right_col" role="main">
-                @RenderBody()
-            </div>
-            <footer>
-                <div class="pull-right">
-                    eGunluk - Powered and Designed by <a href="http://zeyosoft.com">ZeyoSoft</a>
-                </div>
-
-                <div class="clearfix"></div>
-            </footer>
-        </div>
-    </div>
-    <script src="../../Scripts/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../../Scripts/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../Scripts/vendors/fastclick/lib/fastclick.js"></script>
-    <script src="../../Scripts/vendors/nprogress/nprogress.js"></script>
-    <script src="../../Scripts/vendors/Chart.js/dist/Chart.min.js"></script>
-    <script src="../../Scripts/vendors/gauge.js/dist/gauge.min.js"></script>
-    <script src="../../Scripts/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <script src="../../Scripts/vendors/iCheck/icheck.min.js"></script>
-    <script src="../../Scripts/vendors/skycons/skycons.js"></script>
-    <script src="../../Scripts/vendors/Flot/jquery.flot.js"></script>
-    <script src="../../Scripts/vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../../Scripts/vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../../Scripts/vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../../Scripts/vendors/Flot/jquery.flot.resize.js"></script>
-    <script src="../../Scripts/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../../Scripts/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../../Scripts/vendors/flot.curvedlines/curvedLines.js"></script>
-    <script src="../../Scripts/vendors/DateJS/build/date.js"></script>
-    <script src="../../Scripts/vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../../Scripts/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../../Scripts/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <script src="../../Scripts/vendors/moment/min/moment.min.js"></script>
-    <script src="../../Scripts/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="../../Scripts/build/js/custom.min.js"></script>
-    @Scripts.Render("~/bundles/bootstrap")
+<body>
+	<!--start-main-->
+		   <div class="header">
+				<div class="header-top">
+					<div class="container">
+						<div class="logo">
+							<a href="/"><h1>E-Gunluk</h1></a>
+						</div>
+						<div class="login-area">
+					        @Html.Partial("_LoginPartial")
+						</div>
+						<div class="social">
+							<ul>
+								<li><a href="#" class="facebook"> </a></li>
+								<li><a href="#" class="facebook twitter"> </a></li>
+								<li><a href="#" class="facebook in"> </a></li>
+								<li><a href="#" class="facebook yout"> </a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			
+<!--head-bottom-->
+<div class="head-bottom">
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+		  <ul class="nav navbar-nav">
+          <li>@Html.ActionLink("Home", "Index", "Home")</li>
+          <li></li>
+			<li class="dropdown">
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notes <span class="caret"></span></a>
+			  <ul class="dropdown-menu">
+				<li>@Html.ActionLink("My Notes", "Index", "Notes")</li>
+                <li>@Html.ActionLink("New Note", "Create", "Notes")</li>
+				  <li><a href="singlepage.html">Action</a></li>
+			  </ul>
+			</li>
+          @{
+              if (User.IsInRole("Admin"))
+              {
+                  <li>@Html.ActionLink("Admin Panel", "Index", "Users")</li>
+              }
+          }
+		  </ul>
+		</div><!--/.nav-collapse -->
+	  </div>
+	</nav>
+</div>
+<!--head-bottom-->
+</div>	
+<!-- banner -->
+<div class="banner1">
+	
+</div>
+<!-- technology -->
+<div class="technology-1">
+	<div class="container">
+		<div class="col-md-9 technology-left">
+			<div class="business">
+				<div class=" blog-grid2">
+					<div class="blog-text">
+                        @RenderBody()
+					</div>
+				</div>
+				
+				
+			</div>
+		</div>
+		<!-- technology-right -->
+		<div class="col-md-3 technology-right-1">
+				<div class="blo-top">
+					<div class="tech-btm">
+					<img src="~/Content/images/banner1.jpg" class="img-responsive" alt=""/>
+					</div>
+				</div>
+				<div class="blo-top">
+					<div class="tech-btm">
+					<h4>Sign up to our newsletter</h4>
+					<p>Pellentesque dui, non felis. Maecenas male</p>
+						<div class="name">
+							<form>
+								<input type="text" placeholder="Email" required="">
+							</form>
+						</div>	
+						<div class="button">
+							<form>
+								<input type="submit" value="Subscribe">
+							</form>
+						</div>
+							<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="blo-top1">
+					<div class="tech-btm">
+					<h4>Top stories of the week </h4>
+						<div class="blog-grids">
+							<div class="blog-grid-left">
+								<a href="singlepage.html"><img src="~/Content/images/6.jpg" class="img-responsive" alt=""/></a>
+							</div>
+							<div class="blog-grid-right">
+								
+								<h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="blog-grids">
+							<div class="blog-grid-left">
+								<a href="singlepage.html"><img src="~/Content/images/7.jpg" class="img-responsive" alt=""/></a>
+							</div>
+							<div class="blog-grid-right">
+								
+								<h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="blog-grids">
+							<div class="blog-grid-left">
+								<a href="singlepage.html"><img src="~/Content/images/11.jpg" class="img-responsive" alt=""/></a>
+							</div>
+							<div class="blog-grid-right">
+								
+								<h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="blog-grids">
+							<div class="blog-grid-left">
+								<a href="singlepage.html"><img src="~/Content/images/9.jpg" class="img-responsive" alt=""/></a>
+							</div>
+							<div class="blog-grid-right">
+								
+								<h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="blog-grids">
+							<div class="blog-grid-left">
+								<a href="singlepage.html"><img src="~/Content/images/10.jpg" class="img-responsive" alt=""/></a>
+							</div>
+							<div class="blog-grid-right">
+								
+								<h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+				</div>
+			
+		</div>
+		<div class="clearfix"></div>
+		<!-- technology-right -->
+	</div>
+</div>
+<!-- technology -->
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-4 footer-left">
+				<h6>THIS LOOKS GREAT</h6>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt consectetur adipisicing elit,</p>
+			</div>
+			<div class="col-md-4 footer-middle">
+			<h4>Twitter Feed</h4>
+			<div class="mid-btm">
+				<p>Consectetur adipisicing</p>
+				<p>Sed do eiusmod tempor</p>
+				<a href="https://w3layouts.com/">https://w3layouts.com/</a>
+			</div>
+			
+				<p>Consectetur adipisicing</p>
+				<p>Sed do eiusmod tempor</p>
+				<a href="https://w3layouts.com/">https://w3layouts.com/</a>
+		
+			</div>
+			<div class="col-md-4 footer-right">
+				<h4>Quick Links</h4>
+				<li><a href="#">Eiusmod tempor</a></li>
+				<li><a href="#">Consectetur </a></li>
+				<li><a href="#">Adipisicing elit</a></li>
+				<li><a href="#">Eiusmod tempor</a></li>
+				<li><a href="#">Consectetur </a></li>
+				<li><a href="#">Adipisicing elit</a></li>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+<!-- footer -->
+<!-- footer-bottom -->
+	<div class="foot-nav">
+	<div class="container">
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="videos.html">Videos</a></li>
+			<li><a href="reviews.html">Reviews</a></li>
+			<li><a href="tech.html">Tech</a></li>
+			<li><a href="singlepage.html">Culture</a></li>
+			<li><a href="singlepage.html">Science</a></li>
+			<li><a href="design.html">Design</a></li>
+			<li><a href="business.html">Business</a></li>
+			<li><a href="world.html">World</a></li>
+			<li><a href="forum.html">Forum</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<div class="clearfix"></div>
+		</ul>
+		</div>
+				</div>
+<!-- footer-bottom -->
+			<div class="copyright">
+				<div class="container">
+					<p>© 2016 Business_Blog. All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></p>
+				</div>
+			</div>
+	
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>

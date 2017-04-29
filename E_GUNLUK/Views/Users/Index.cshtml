@@ -1,0 +1,37 @@
+﻿@model IEnumerable<E_GUNLUK.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Users Panel";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add new account", "AddNewAccount")
+</p>
+
+
+
+@foreach (var item in Model)
+{
+    <div class="">
+        <hr />
+        <span class="mynameisname">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</span>
+        <span class="mynameisname">@Html.ActionLink("More", "Details", new { id = item.Id })</span>
+        <span class="mynameisname">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</span>
+        <hr />
+        <span class="mynameisname">Fname Lname :</span> <span class="user-info">@item.FirstName @item.LastName</span>
+        <span class="mynameisname">User Name:</span><span class="user-info"> @item.UserName</span>
+        <span class="mynameisname">Email:</span><span class="user-info">@item.Email</span>
+        <span class="mynameisname">Role:</span> @{
+            foreach (var i in item.Roles.ToList().Where(m => m.UserId == item.Id))
+            {
+                <span class="user-info" >@i.RoleId</span>
+            }
+        }
+
+        <span class="mynameisname">Phone No. :</span> <span class="user-info">@item.PhoneNumber</span>
+        <hr />
+    </div>
+
+            }

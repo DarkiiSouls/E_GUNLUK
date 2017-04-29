@@ -31,7 +31,7 @@ namespace E_GUNLUK.Controllers
         {
             var userid = User.Identity.GetUserId();
             var user = db.Users.Single(u => u.Id == userid);
-            var checker_like = db.likes.SingleOrDefault(l => l.whichNote == id && l.user.Id == user.Id);
+            var checker_like = db.likes.SingleOrDefault(l => l.whichNote == id && l.user.Id == userid);
             var like_var = new Likes {
                 user = user,
                 whichNote = id

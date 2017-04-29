@@ -1,0 +1,36 @@
+﻿@model E_GUNLUK.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Delete an account";
+}
+
+    <h2>Delete Confirmation for the account @Model.Email</h2>
+    <h4>Are you sure?</h4>
+
+    
+
+    <div class="tc-ch" style="border:dashed 2px #ffffff;">
+        <hr />
+        @Html.ActionLink("Users Panel", "Index")
+
+
+        <h4>ID:</h4> <span class="user-info">@Model.Id</span>
+        <h4>User Name:</h4><span class="user-info"> @Model.UserName</span>
+        <h4>Email:</h4><span class="user-info">@Model.Email</span>
+        <h4>Role:</h4> @{
+            foreach (var i in Model.Roles.ToList().Where(m => m.UserId == Model.Id))
+            {
+                <span class="user-info">@i.RoleId</span>
+            }
+        }
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+            </div>
+        }
+    </div>

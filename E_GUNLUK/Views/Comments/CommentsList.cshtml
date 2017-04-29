@@ -11,14 +11,27 @@
         
         foreach (var i in Model)
         {
-        <div>
-            @i.commentator<br />
-            @i.commentDate<br />
-            <p>@i.theComment</p>
+        <div class="comment-top">
+            <div class="media-left">
+                <a href="#">
+                    <img src="~/Content/images/si.png" alt="">
+
+                </a>
+                @i.commentDate
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"> </h4> 
+                <p>@i.theComment</p>
+</div>
+            <br />
+            <br />
+           
             
         </div>
                 }
             }
         
-
-</div>
+        
+  
+   
+    </div>

@@ -4,13 +4,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Note</h4>
-    <hr />
+
+    
 
             <h2>@Html.DisplayFor(model => model.Title)</h2>
+    <hr />
             <span class="glyphicon-time">@Html.DisplayFor(model => model.NoteDate)</span>
             <p>@Html.DisplayFor(model => model.NoteText)</p>
             <span>Privacy: @Html.DisplayFor(model => model.PubOrPvt)</span>

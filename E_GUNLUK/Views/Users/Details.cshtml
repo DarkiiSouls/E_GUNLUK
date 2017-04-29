@@ -1,0 +1,30 @@
+﻿@model E_GUNLUK.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Account Details for "+Model.Email;
+}
+
+
+<div>
+    <h2>Account Details for @Model.Email</h2>
+
+    <div class="tc-ch">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Users Panel", "Index")
+
+
+        <h4>ID:</h4> <span class="user-info">@Model.Id</span>
+        <h4>User Name:</h4><span class="user-info"> @Model.UserName</span>
+        <h4>Email:</h4><span class="user-info">@Model.Email</span>
+        <h4>Role:</h4> @{
+            foreach (var i in Model.Roles.ToList().Where(m => m.UserId == Model.Id))
+            {
+                <span class="user-info">@i.RoleId</span>
+            }
+        }
+
+        <h4>Phone No. :</h4> <span class="user-info">@Model.PhoneNumber</span>
+        <hr />
+    </div>
+
+</div>

@@ -25,5 +25,6 @@ namespace E_GUNLUK.Models
         {
             return new ApplicationDbContext();
         }
+
     }
 }

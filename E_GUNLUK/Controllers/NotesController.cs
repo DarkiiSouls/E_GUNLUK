@@ -16,14 +16,25 @@ namespace E_GUNLUK.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // HOMEPAGE
+        [Authorize]
         public ActionResult Index()
         {
-            return View(db.notes.ToList());
+            if (User.Identity.IsAuthenticated && User!=null)
+            {
+                var userid = User.Identity.GetUserId();
+
+                var user = db.Users.FirstOrDefault(u => u.Id == userid);
+                var noteslist = db.notes.ToList().Where(n => n.NoteTaker == user);
+                return View(noteslist);
+
+            }
+            return View();
         }
 
          // /Notes/Details/id
         public ActionResult Details(int? id)
         {
+           
             Note note = db.notes.Find(id);
             if (id == null)
             {
@@ -52,6 +63,7 @@ namespace E_GUNLUK.Controllers
         public ActionResult Create(NotesCommentsViewModel viewModel)
         {
             var userid = User.Identity.GetUserId();
+
             var user = db.Users.Single(u => u.Id == userid);
             var note = new Note {
                 NoteTaker = user,
@@ -113,6 +125,7 @@ namespace E_GUNLUK.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Note note = db.notes.Find(id);
+
             if (note == null)
             {
                 return HttpNotFound();

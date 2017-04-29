@@ -201,6 +201,7 @@
     <Compile Include="Controllers\LikesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,6 +237,14 @@
     <Compile Include="Migrations\201704181855328_changeddatetimetodatetime2.Designer.cs">
       <DependentUpon>201704181855328_changeddatetimetodatetime2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704251142152_editedLikesTabletoAccept2PKs.cs" />
+    <Compile Include="Migrations\201704251142152_editedLikesTabletoAccept2PKs.Designer.cs">
+      <DependentUpon>201704251142152_editedLikesTabletoAccept2PKs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704252034352_addednamelastnametoappuser.cs" />
+    <Compile Include="Migrations\201704252034352_addednamelastnametoappuser.Designer.cs">
+      <DependentUpon>201704252034352_addednamelastnametoappuser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -257,6 +266,33 @@
     <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\images\1.jpg" />
+    <Content Include="Content\images\10.jpg" />
+    <Content Include="Content\images\11.jpg" />
+    <Content Include="Content\images\111.png" />
+    <Content Include="Content\images\2.jpg" />
+    <Content Include="Content\images\3.jpg" />
+    <Content Include="Content\images\4.jpg" />
+    <Content Include="Content\images\5.jpg" />
+    <Content Include="Content\images\6.jpg" />
+    <Content Include="Content\images\7.jpg" />
+    <Content Include="Content\images\9.jpg" />
+    <Content Include="Content\images\banner-1.jpg" />
+    <Content Include="Content\images\banner.jpg" />
+    <Content Include="Content\images\banner1.jpg" />
+    <Content Include="Content\images\iconmonstr-vimeo-4-icon-32.png" />
+    <Content Include="Content\images\iconmonstr-youtube-4-icon-32.png" />
+    <Content Include="Content\images\logo152.png" />
+    <Content Include="Content\images\logotype42.png" />
+    <Content Include="Content\images\search-icon.png" />
+    <Content Include="Content\images\search.png" />
+    <Content Include="Content\images\si.png" />
+    <Content Include="Content\images\social network132.png" />
+    <Content Include="Content\images\social.png" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\jquery-1.11.1.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -266,14 +302,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\build\css\custom.css" />
-    <Content Include="Scripts\build\css\custom.min.css" />
-    <Content Include="Scripts\build\css\maps\jquery-jvectormap-2.0.3.css" />
-    <Content Include="Scripts\build\js\custom.js" />
-    <Content Include="Scripts\build\js\custom.min.js" />
-    <Content Include="Scripts\build\js\datepicker\daterangepicker.js" />
-    <Content Include="Scripts\build\js\moment\moment.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -285,6 +318,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -326,11 +360,17 @@
     <Content Include="Views\Notes\Index.cshtml" />
     <Content Include="Views\Comments\Comment.cshtml" />
     <Content Include="Views\Notes\CommentsList_2.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout---.cshtml" />
     <Content Include="Views\Comments\CommentsList.cshtml" />
     <Content Include="Views\Notes\Like.cshtml" />
     <Content Include="Views\Likes\Like.cshtml" />
     <Content Include="Views\Notes\NotAuthorized.cshtml" />
+    <Content Include="Views\Shared\NotAuthorized.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\AddNewAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -367,6 +407,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704181855328_changeddatetimetodatetime2.resx">
       <DependentUpon>201704181855328_changeddatetimetodatetime2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704251142152_editedLikesTabletoAccept2PKs.resx">
+      <DependentUpon>201704251142152_editedLikesTabletoAccept2PKs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704252034352_addednamelastnametoappuser.resx">
+      <DependentUpon>201704252034352_addednamelastnametoappuser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
