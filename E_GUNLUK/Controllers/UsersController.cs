@@ -10,6 +10,7 @@ using E_GUNLUK.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace E_GUNLUK.Controllers
 {
@@ -55,11 +56,14 @@ namespace E_GUNLUK.Controllers
 
         public ActionResult Index()
         {
+            
+            var model = db.Users.ToList();
+
             if (!User.IsInRole("Admin"))
             {
                 return PartialView("~/Views/Shared/NotAuthorized.cshtml");
             }
-            return View(db.Users.ToList());
+            return View(model);
         }
 
         public ActionResult Details(string id)

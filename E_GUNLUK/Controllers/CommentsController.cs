@@ -2,6 +2,7 @@
 using E_GUNLUK.Models;
 using Microsoft.AspNet.Identity;
 using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,7 +22,7 @@ namespace E_GUNLUK.Controllers
 
         // Create Comment ( Partial View )
         [HttpGet] //GET
-
+  
         public ActionResult Comment(int id)
         {
             var newComment = new Comments();
@@ -45,36 +46,17 @@ namespace E_GUNLUK.Controllers
                 theComment = viewModel.theComment,
                 whichNote = id
             };
-            try
-            {
+                       
+
                 db.comments.Add(comment);
                 db.SaveChanges();
-                return View(comment);
+                return RedirectToAction("Details", "Notes", new { id = id });
 
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
-            {
-
-                Exception raise = dbEx;
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        string message = string.Format("{0}:{1}",
-                            validationErrors.Entry.Entity.ToString(),
-                            validationError.ErrorMessage);
-                        // raise a new exception nesting  
-                        // the current instance as InnerException  
-                        raise = new InvalidOperationException(message, raise);
-                    }
-                }
-                throw raise;
-            }
         }
 
         public ActionResult CommentsList(int id)
         {
-            var commentlist = db.comments.Where(m => m.whichNote == id).ToList();
+            var commentlist = db.comments.Where(m => m.whichNote == id).Include(x=>x.commentator).ToList();
             if (commentlist == null)
             {
                 return View("No comments are available!");

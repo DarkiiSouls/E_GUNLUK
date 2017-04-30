@@ -29,6 +29,7 @@ namespace E_GUNLUK.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Like(Likes like, int id)
         {
+            ViewBag.stat = "Like";
             var userid = User.Identity.GetUserId();
             var user = db.Users.Single(u => u.Id == userid);
             var checker_like = db.likes.SingleOrDefault(l => l.whichNote == id && l.user.Id == userid);
@@ -37,13 +38,18 @@ namespace E_GUNLUK.Controllers
                 whichNote = id
             };
             if (checker_like == null)
-            { 
+            {
+                //ViewBag.stat = "Like";
                 db.likes.Add(like_var);
                 db.SaveChanges();
-                return View(like_var);
+                return RedirectToAction("Details","Notes", new { id = id });
             }
-            else
+            else if(checker_like !=null)
             {
+                //ViewBag.stat = "dislike";
+                db.likes.Remove(checker_like);
+                db.SaveChanges();
+                return RedirectToAction("Details", "Notes", new { id= id });
 
             }
             return View();

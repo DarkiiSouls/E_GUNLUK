@@ -4,7 +4,7 @@
     Layout = null;
 }
 
-@using (@Html.BeginForm())
+@using (@Html.BeginForm("Comment", "Comments", FormMethod.Post, new { id = "Comment-btn", @class = "comment-btn" }))
 
 {
     @Html.AntiForgeryToken()
@@ -15,7 +15,7 @@
 </div>
 <div class="form-group">
     <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="Create" action="@Url.Action("Comment", "Notes")" class="btn btn-default" />
+        <a class="btn btn-default" href="javascript:document.getElementById('Comment-btn').submit()">Comment</a>
     </div>
 </div>
 

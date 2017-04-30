@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using E_GUNLUK.Models;
+using System.Security.Principal;
 
 namespace E_GUNLUK.Controllers
 {
@@ -17,9 +18,10 @@ namespace E_GUNLUK.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private ApplicationDbContext db;
         public AccountController()
         {
+            db = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -60,7 +62,16 @@ namespace E_GUNLUK.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
+        public ActionResult LoginPartial()
+        {
+            if (User.Identity.IsAuthenticated && User!=null)
+            {
+                var currentUser = User.Identity.GetUserId();
+                var finduser = db.Users.SingleOrDefault(u => u.Id == currentUser);
+                return View(finduser);
+            }
+            return View();
+        }
         //
         // POST: /Account/Login
         [HttpPost]
@@ -68,6 +79,8 @@ namespace E_GUNLUK.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            var user = await UserManager.FindByNameAsync(model.Email);
+            var t = await UserManager.AddClaimAsync(user.Id, new Claim("FirstName", user.FirstName + " " + user.LastName));
             if (!ModelState.IsValid)
             {
                 return View(model);

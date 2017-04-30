@@ -34,8 +34,10 @@ namespace E_GUNLUK.Controllers
          // /Notes/Details/id
         public ActionResult Details(int? id)
         {
-           
-            Note note = db.notes.Find(id);
+
+            Note note = db.notes.Include(u => u.NoteTaker).SingleOrDefault(i => i.NoteId == id);
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -60,7 +62,7 @@ namespace E_GUNLUK.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(NotesCommentsViewModel viewModel)
+        public ActionResult Create(Note viewModel)
         {
             var userid = User.Identity.GetUserId();
 
@@ -68,9 +70,9 @@ namespace E_GUNLUK.Controllers
             var note = new Note {
                 NoteTaker = user,
                 NoteDate = DateTime.Now,
-                Title = viewModel.noteviewmodel.Title,
-                NoteText = viewModel.noteviewmodel.NoteText,
-                PubOrPvt = viewModel.noteviewmodel.PubOrPvt
+                Title = viewModel.Title,
+                NoteText = viewModel.NoteText,
+                PubOrPvt = viewModel.PubOrPvt
             };
                 //ViewBag.HtmlContent = viewModel.noteviewmodel.NoteText;
                 db.notes.Add(note);

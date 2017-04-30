@@ -21,6 +21,7 @@ namespace E_GUNLUK.Models
         public DateTime NoteDate { get; set; }
         [Required]
         public bool PubOrPvt { get; set; }
+
         //public IEnumerable<Comments> comments { get; set; }
 
     }

@@ -1,24 +1,27 @@
 ﻿using E_GUNLUK.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace E_GUNLUK.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
+        public HomeController()
+        {
+            db = new ApplicationDbContext();
+        }
         public ActionResult Index()
         {
-            var uid = User.Identity.GetUserId();
-            //var user = db.Users.Single(u => u.Id == uid);
-            var model = db.notes.ToList();
-                //.Where(n=>n.NoteTaker.Id== user.Id || n.NoteTaker.Id != user.Id);
-            
-            return View(model);
+
+            var m = db.notes.Include(y=>y.NoteTaker);
+            return View(m.ToList());
 
         }
 
@@ -34,6 +37,14 @@ namespace E_GUNLUK.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

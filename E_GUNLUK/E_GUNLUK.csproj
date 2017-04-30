@@ -201,6 +201,7 @@
     <Compile Include="Controllers\LikesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotesController.cs" />
+    <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -244,6 +245,22 @@
     <Compile Include="Migrations\201704252034352_addednamelastnametoappuser.cs" />
     <Compile Include="Migrations\201704252034352_addednamelastnametoappuser.Designer.cs">
       <DependentUpon>201704252034352_addednamelastnametoappuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704291643482_ttttt.cs" />
+    <Compile Include="Migrations\201704291643482_ttttt.Designer.cs">
+      <DependentUpon>201704291643482_ttttt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704291659467_twge.cs" />
+    <Compile Include="Migrations\201704291659467_twge.Designer.cs">
+      <DependentUpon>201704291659467_twge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704301418421_tagsTo250varchar.cs" />
+    <Compile Include="Migrations\201704301418421_tagsTo250varchar.Designer.cs">
+      <DependentUpon>201704301418421_tagsTo250varchar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704301532045_updatedTags.cs" />
+    <Compile Include="Migrations\201704301532045_updatedTags.Designer.cs">
+      <DependentUpon>201704301532045_updatedTags.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -318,6 +335,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Account\LoginPartial.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -371,9 +389,15 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\AddNewAccount.cshtml" />
+    <Content Include="Views\Shared\_MyLoginPartial.cshtml" />
+    <Content Include="Views\Tags\Index.cshtml" />
+    <Content Include="Views\Tags\Create.cshtml" />
+    <Content Include="Views\Tags\Edit.cshtml" />
+    <Content Include="Views\Tags\ShowTags.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\UserProfile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -413,6 +437,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704252034352_addednamelastnametoappuser.resx">
       <DependentUpon>201704252034352_addednamelastnametoappuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704291643482_ttttt.resx">
+      <DependentUpon>201704291643482_ttttt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704291659467_twge.resx">
+      <DependentUpon>201704291659467_twge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704301418421_tagsTo250varchar.resx">
+      <DependentUpon>201704301418421_tagsTo250varchar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704301532045_updatedTags.resx">
+      <DependentUpon>201704301532045_updatedTags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -45,6 +45,13 @@
             </div>
         </div>
 
+        <div>
+            @Html.Action("Create", "Tags", Model.NoteId)
+            <hr />
+            @Html.Action("ShowTags","Tags", Model.NoteId)
+        </div>
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

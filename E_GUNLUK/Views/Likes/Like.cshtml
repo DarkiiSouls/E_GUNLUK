@@ -4,18 +4,20 @@
     }
 
 
-@using (@Html.BeginForm())
+@using (@Html.BeginForm("Like", "Likes" , FormMethod.Post, new { id = "Like-btn", @class = "like-btn" }))
 
 {
     @Html.AntiForgeryToken()
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
+         <a class="btn btn-default" href="javascript:document.getElementById('Like-btn').submit()">like</a>
+        </div>                    
 </div>
 
-</div>
+
 
 }
 
 
-<input type="submit" value="Like" action="@Url.Action("Like", "Likes")" class="btn btn-default" />
+

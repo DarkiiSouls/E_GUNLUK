@@ -5,30 +5,40 @@
 }
 
 
-@foreach (var item in Model)
-{
-    <div class="tc-ch">
-        <div class="tch-img">
-            <a href="#"><img src="~/Content/images/1.jpg" class="img-responsive" alt="" /></a>
-        </div>
-        <a class="blog blue" href="#">Technology</a>
-        <h3><a href="/Notes/Details/@item.NoteId">@Html.DisplayFor(modelItem => item.Title)</a></h3> 
+@{
+    if (Model.ToList().Count() == 0)
+    {
+        <h1>There are no notes!</h1>
 
-        <p>
-            @Html.DisplayFor(modelItem => item.NoteText)
-        </p>
-        <div class="blog-poast-info">
-            <ul>
-                <li><i class="glyphicon glyphicon-user"> @Html.DisplayFor(modelItem=> item.NoteTaker.LastName) </i>                   
-                </li>
-                <li><i class="glyphicon glyphicon-calendar"> </i>@item.NoteDate</li>
-                <li><i class="glyphicon glyphicon-comment"> </i><a class="p-blog" href="#">n Comments </a></li>
-                <li><i class="glyphicon glyphicon-eye-open">Privacy: @Html.DisplayFor(modelItem => item.PubOrPvt)</i></li>
-                <li><i class="glyphicon glyphicon-heart"> </i><a class="admin" href="#">n favourites </a></li>
-            </ul>
-        </div>
+    }
+    else
+    {
+        <h6>Notes Written: @Model.ToList().Count()</h6>
+        foreach (var item in Model)
+        {
+            <div class="tc-ch">
+                <div class="tch-img">
+                    <a href="#"><img src="~/Content/images/1.jpg" class="img-responsive" alt="" /></a>
+                </div>
+                <a class="blog blue" href="#">Technology</a>
+                <h3><a href="/Notes/Details/@item.NoteId">@Html.DisplayFor(modelItem => item.Title)</a></h3><span>Published In: @Html.DisplayFor(modelItem => item.NoteDate)| Privacy: @Html.DisplayFor(modelItem => item.PubOrPvt) | By: @Html.DisplayFor(modelItem => item.NoteTaker.Id)</span>
 
-    </div>
+                <p>
+                    @Html.DisplayFor(modelItem => item.NoteText)
+                </p>
+                <div class="blog-poast-info">
+                    <ul>
+                        <li><i class="glyphicon glyphicon-user"> </i><a class="admin" href="#">@item.NoteTaker.FirstName</a></li>
+                        <li><i class="glyphicon glyphicon-calendar"> </i>@item.NoteDate</li>
+                        <li><i class="glyphicon glyphicon-comment"> </i><a class="p-blog" href="#">n Comments </a></li>
+                        <li><i class="glyphicon glyphicon-heart"> </i><a class="admin" href="#">n favourites </a></li>
+                    </ul>
+                </div>
+            </div>
+        }
+        <hr />
+
+
+    }
 }
-<hr />
 
