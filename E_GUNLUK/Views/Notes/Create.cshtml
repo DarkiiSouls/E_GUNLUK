@@ -1,5 +1,5 @@
-﻿@model E_GUNLUK.Models.Note
-
+﻿@model E_GUNLUK.Models.NotesViewModel
+@using E_GUNLUK.Models
 @{
     ViewBag.Title = "Create";
 }
@@ -39,9 +39,15 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            choose tags:
+            @Html.DropDownListFor(model=>model.selected_tag, new SelectList(Model.tags_list, "tagId", "tag"))
+
+            
+
+        </div>
         <div>
             <hr />
-            @Html.Action("ShowTags","Tags",Model.NoteId)
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -49,7 +55,7 @@
             </div>
         </div>
     </div>
-}
+                }
 
 <div>
     @Html.ActionLink("Back to List", "Index")

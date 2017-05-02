@@ -206,61 +206,73 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704171853533_InitMig.cs" />
-    <Compile Include="Migrations\201704171853533_InitMig.Designer.cs">
-      <DependentUpon>201704171853533_InitMig.cs</DependentUpon>
+    <Compile Include="Migrations\201704302208511_test.cs" />
+    <Compile Include="Migrations\201704302208511_test.Designer.cs">
+      <DependentUpon>201704302208511_test.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704171904334_createdNoteTable.cs" />
-    <Compile Include="Migrations\201704171904334_createdNoteTable.Designer.cs">
-      <DependentUpon>201704171904334_createdNoteTable.cs</DependentUpon>
+    <Compile Include="Migrations\201704302227054_appuserrequired.cs" />
+    <Compile Include="Migrations\201704302227054_appuserrequired.Designer.cs">
+      <DependentUpon>201704302227054_appuserrequired.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704172002129_createdAllTables.cs" />
-    <Compile Include="Migrations\201704172002129_createdAllTables.Designer.cs">
-      <DependentUpon>201704172002129_createdAllTables.cs</DependentUpon>
+    <Compile Include="Migrations\201704302239405_ddddgshsd.cs" />
+    <Compile Include="Migrations\201704302239405_ddddgshsd.Designer.cs">
+      <DependentUpon>201704302239405_ddddgshsd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704172012569_addedRequiredStuff123.cs" />
-    <Compile Include="Migrations\201704172012569_addedRequiredStuff123.Designer.cs">
-      <DependentUpon>201704172012569_addedRequiredStuff123.cs</DependentUpon>
+    <Compile Include="Migrations\201704302254450_testingDB0.cs" />
+    <Compile Include="Migrations\201704302254450_testingDB0.Designer.cs">
+      <DependentUpon>201704302254450_testingDB0.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704172015459_populateTheDB.cs" />
-    <Compile Include="Migrations\201704172015459_populateTheDB.Designer.cs">
-      <DependentUpon>201704172015459_populateTheDB.cs</DependentUpon>
+    <Compile Include="Migrations\201704302310449_testingDB02.cs" />
+    <Compile Include="Migrations\201704302310449_testingDB02.Designer.cs">
+      <DependentUpon>201704302310449_testingDB02.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704181703340_enumberablecommentsinnotes.cs" />
-    <Compile Include="Migrations\201704181703340_enumberablecommentsinnotes.Designer.cs">
-      <DependentUpon>201704181703340_enumberablecommentsinnotes.cs</DependentUpon>
+    <Compile Include="Migrations\201704302333009_tagsinnote.cs" />
+    <Compile Include="Migrations\201704302333009_tagsinnote.Designer.cs">
+      <DependentUpon>201704302333009_tagsinnote.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704181714569_removedEnumverablefromnotes.cs" />
-    <Compile Include="Migrations\201704181714569_removedEnumverablefromnotes.Designer.cs">
-      <DependentUpon>201704181714569_removedEnumverablefromnotes.cs</DependentUpon>
+    <Compile Include="Migrations\201705010024179_removedFKintags.cs" />
+    <Compile Include="Migrations\201705010024179_removedFKintags.Designer.cs">
+      <DependentUpon>201705010024179_removedFKintags.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704181855328_changeddatetimetodatetime2.cs" />
-    <Compile Include="Migrations\201704181855328_changeddatetimetodatetime2.Designer.cs">
-      <DependentUpon>201704181855328_changeddatetimetodatetime2.cs</DependentUpon>
+    <Compile Include="Migrations\201705010029163_removedFKintags000.cs" />
+    <Compile Include="Migrations\201705010029163_removedFKintags000.Designer.cs">
+      <DependentUpon>201705010029163_removedFKintags000.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704251142152_editedLikesTabletoAccept2PKs.cs" />
-    <Compile Include="Migrations\201704251142152_editedLikesTabletoAccept2PKs.Designer.cs">
-      <DependentUpon>201704251142152_editedLikesTabletoAccept2PKs.cs</DependentUpon>
+    <Compile Include="Migrations\201705010030495_removedFKintags0005.cs" />
+    <Compile Include="Migrations\201705010030495_removedFKintags0005.Designer.cs">
+      <DependentUpon>201705010030495_removedFKintags0005.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704252034352_addednamelastnametoappuser.cs" />
-    <Compile Include="Migrations\201704252034352_addednamelastnametoappuser.Designer.cs">
-      <DependentUpon>201704252034352_addednamelastnametoappuser.cs</DependentUpon>
+    <Compile Include="Migrations\201705010041349_removedFKintags000590.cs" />
+    <Compile Include="Migrations\201705010041349_removedFKintags000590.Designer.cs">
+      <DependentUpon>201705010041349_removedFKintags000590.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704291643482_ttttt.cs" />
-    <Compile Include="Migrations\201704291643482_ttttt.Designer.cs">
-      <DependentUpon>201704291643482_ttttt.cs</DependentUpon>
+    <Compile Include="Migrations\201705010051411_removedFKintags000590687.cs" />
+    <Compile Include="Migrations\201705010051411_removedFKintags000590687.Designer.cs">
+      <DependentUpon>201705010051411_removedFKintags000590687.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704291659467_twge.cs" />
-    <Compile Include="Migrations\201704291659467_twge.Designer.cs">
-      <DependentUpon>201704291659467_twge.cs</DependentUpon>
+    <Compile Include="Migrations\201705021631320_removeFKfromTagsNote.cs" />
+    <Compile Include="Migrations\201705021631320_removeFKfromTagsNote.Designer.cs">
+      <DependentUpon>201705021631320_removeFKfromTagsNote.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704301418421_tagsTo250varchar.cs" />
-    <Compile Include="Migrations\201704301418421_tagsTo250varchar.Designer.cs">
-      <DependentUpon>201704301418421_tagsTo250varchar.cs</DependentUpon>
+    <Compile Include="Migrations\201705021633193_removeFKfromTagsNote_remove.cs" />
+    <Compile Include="Migrations\201705021633193_removeFKfromTagsNote_remove.Designer.cs">
+      <DependentUpon>201705021633193_removeFKfromTagsNote_remove.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704301532045_updatedTags.cs" />
-    <Compile Include="Migrations\201704301532045_updatedTags.Designer.cs">
-      <DependentUpon>201704301532045_updatedTags.cs</DependentUpon>
+    <Compile Include="Migrations\201705021641449_tteeeeeeest.cs" />
+    <Compile Include="Migrations\201705021641449_tteeeeeeest.Designer.cs">
+      <DependentUpon>201705021641449_tteeeeeeest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705021648414_addedNotesTagsTABLE.cs" />
+    <Compile Include="Migrations\201705021648414_addedNotesTagsTABLE.Designer.cs">
+      <DependentUpon>201705021648414_addedNotesTagsTABLE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705021658320_MEH.cs" />
+    <Compile Include="Migrations\201705021658320_MEH.Designer.cs">
+      <DependentUpon>201705021658320_MEH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705021706571_MEH_234.cs" />
+    <Compile Include="Migrations\201705021706571_MEH_234.Designer.cs">
+      <DependentUpon>201705021706571_MEH_234.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -276,6 +288,7 @@
     <Compile Include="Models\NotesCommentsViewModel.cs" />
     <Compile Include="Models\NotesViewModel.cs" />
     <Compile Include="Models\Tags.cs" />
+    <Compile Include="Models\TagsNotesRel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -336,6 +349,8 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Account\LoginPartial.cshtml" />
+    <Content Include="Views\Comments\CommentsCounts.cshtml" />
+    <Content Include="Views\Likes\LikesCounts.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -408,47 +423,56 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704171853533_InitMig.resx">
-      <DependentUpon>201704171853533_InitMig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704302208511_test.resx">
+      <DependentUpon>201704302208511_test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704171904334_createdNoteTable.resx">
-      <DependentUpon>201704171904334_createdNoteTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704302227054_appuserrequired.resx">
+      <DependentUpon>201704302227054_appuserrequired.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704172002129_createdAllTables.resx">
-      <DependentUpon>201704172002129_createdAllTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704302239405_ddddgshsd.resx">
+      <DependentUpon>201704302239405_ddddgshsd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704172012569_addedRequiredStuff123.resx">
-      <DependentUpon>201704172012569_addedRequiredStuff123.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704302254450_testingDB0.resx">
+      <DependentUpon>201704302254450_testingDB0.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704172015459_populateTheDB.resx">
-      <DependentUpon>201704172015459_populateTheDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704302310449_testingDB02.resx">
+      <DependentUpon>201704302310449_testingDB02.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704181703340_enumberablecommentsinnotes.resx">
-      <DependentUpon>201704181703340_enumberablecommentsinnotes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704302333009_tagsinnote.resx">
+      <DependentUpon>201704302333009_tagsinnote.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704181714569_removedEnumverablefromnotes.resx">
-      <DependentUpon>201704181714569_removedEnumverablefromnotes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705010024179_removedFKintags.resx">
+      <DependentUpon>201705010024179_removedFKintags.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704181855328_changeddatetimetodatetime2.resx">
-      <DependentUpon>201704181855328_changeddatetimetodatetime2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705010029163_removedFKintags000.resx">
+      <DependentUpon>201705010029163_removedFKintags000.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704251142152_editedLikesTabletoAccept2PKs.resx">
-      <DependentUpon>201704251142152_editedLikesTabletoAccept2PKs.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705010030495_removedFKintags0005.resx">
+      <DependentUpon>201705010030495_removedFKintags0005.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704252034352_addednamelastnametoappuser.resx">
-      <DependentUpon>201704252034352_addednamelastnametoappuser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705010041349_removedFKintags000590.resx">
+      <DependentUpon>201705010041349_removedFKintags000590.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704291643482_ttttt.resx">
-      <DependentUpon>201704291643482_ttttt.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705010051411_removedFKintags000590687.resx">
+      <DependentUpon>201705010051411_removedFKintags000590687.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704291659467_twge.resx">
-      <DependentUpon>201704291659467_twge.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705021631320_removeFKfromTagsNote.resx">
+      <DependentUpon>201705021631320_removeFKfromTagsNote.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704301418421_tagsTo250varchar.resx">
-      <DependentUpon>201704301418421_tagsTo250varchar.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705021633193_removeFKfromTagsNote_remove.resx">
+      <DependentUpon>201705021633193_removeFKfromTagsNote_remove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704301532045_updatedTags.resx">
-      <DependentUpon>201704301532045_updatedTags.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705021641449_tteeeeeeest.resx">
+      <DependentUpon>201705021641449_tteeeeeeest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705021648414_addedNotesTagsTABLE.resx">
+      <DependentUpon>201705021648414_addedNotesTagsTABLE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705021658320_MEH.resx">
+      <DependentUpon>201705021658320_MEH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705021706571_MEH_234.resx">
+      <DependentUpon>201705021706571_MEH_234.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

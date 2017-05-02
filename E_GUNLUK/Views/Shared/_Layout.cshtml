@@ -67,9 +67,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           @{
               if (User.IsInRole("Admin"))
               {
-                  <li>@Html.ActionLink("Admin Panel", "Index", "Users")</li>
+                <li>@Html.ActionLink("Manage Users", "Index", "Users")</li>
+                <li>@Html.ActionLink("Manage Tags", "Index", "Tags")</li>
               }
-          }
+        }
 		  </ul>
 		</div><!--/.nav-collapse -->
 	  </div>

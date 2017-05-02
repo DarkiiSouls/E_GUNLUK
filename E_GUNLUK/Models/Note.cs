@@ -10,6 +10,7 @@ namespace E_GUNLUK.Models
 {
     public class Note
     {
+        
         public  ApplicationUser NoteTaker { get; set; }
         [Key]
         [Column(Order = 1)]
@@ -21,8 +22,10 @@ namespace E_GUNLUK.Models
         public DateTime NoteDate { get; set; }
         [Required]
         public bool PubOrPvt { get; set; }
+        public Tags Selected_tag { get; set; }
 
-        //public IEnumerable<Comments> comments { get; set; }
+        //[ForeignKey("tags")]
+        //public IEnumerable<Tags> selected_tags { get; set; }
 
     }
 }

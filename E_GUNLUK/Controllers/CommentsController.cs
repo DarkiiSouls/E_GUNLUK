@@ -45,13 +45,10 @@ namespace E_GUNLUK.Controllers
                 commentDate = DateTime.Now,
                 theComment = viewModel.theComment,
                 whichNote = id
-            };
-                       
-
+            };                      
                 db.comments.Add(comment);
                 db.SaveChanges();
                 return RedirectToAction("Details", "Notes", new { id = id });
-
         }
 
         public ActionResult CommentsList(int id)
@@ -64,9 +61,6 @@ namespace E_GUNLUK.Controllers
 
             foreach (var item in commentlist)
             {
-
-                // var query = db.comments.Single(m=> m.whichNote == id);
-
                 if (item.whichNote == id)
                 {
                     return View(commentlist);
@@ -75,18 +69,12 @@ namespace E_GUNLUK.Controllers
 
             }
 
-            /*
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-
-            }
-            */
             return View();
+        }
+        public ActionResult CommentsCounts(int id)
+        {
+            var commentlist = db.comments.Where(m => m.whichNote == id).ToList();       
+            return View(commentlist);     
         }
     }
 }

@@ -182,6 +182,7 @@ namespace E_GUNLUK.Controllers
             }
             ApplicationUser applicationUser = db.Users.Find(id);
             db.Users.Remove(applicationUser);
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

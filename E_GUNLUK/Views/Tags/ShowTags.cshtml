@@ -2,15 +2,11 @@
 @{ 
     Layout = null;
 }
-<ul>
-    @foreach (var item in Model)
-    {
 
-
-        <li>@Html.DisplayFor(modelItem => item.tag)</li>
-
-    }
-</ul>
+@Html.DropDownList("tagId", (MultiSelectList)ViewBag.tags, new { multiple = "multiple" })
+@{
+    //Html.ListBox("tagId", (MultiSelectList)ViewBag.tags)
+}
 
 
 

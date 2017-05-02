@@ -80,7 +80,7 @@ namespace E_GUNLUK.Controllers
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             var user = await UserManager.FindByNameAsync(model.Email);
-            var t = await UserManager.AddClaimAsync(user.Id, new Claim("FirstName", user.FirstName + " " + user.LastName));
+            //var t = await UserManager.AddClaimAsync(user.Id, new Claim("FirstName", user.FirstName + " " + user.LastName));
             if (!ModelState.IsValid)
             {
                 return View(model);

@@ -54,6 +54,11 @@ namespace E_GUNLUK.Controllers
             }
             return View();
         }
+        public ActionResult LikesCounts(int id)
+        {
+            var Likeslist = db.likes.Where(m => m.whichNote == id).ToList();
+            return View(Likeslist);
+        }
 
     }
 }

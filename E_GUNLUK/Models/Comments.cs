@@ -12,6 +12,7 @@ namespace E_GUNLUK.Models
         [Key]
         [Column(Order = 1)]
         public int commentId { get; set; }
+        [Required]
         public  ApplicationUser commentator { get; set; }
         [ForeignKey("Note")]
         [Required]

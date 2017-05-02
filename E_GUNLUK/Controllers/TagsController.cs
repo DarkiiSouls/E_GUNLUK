@@ -21,20 +21,21 @@ namespace E_GUNLUK.Controllers
         // GET: Tags
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated && User != null)
-            {
-                var user = User.Identity.GetUserId();
-                var tags = db.tags.Include(n=>n.Note).Where(t => t.Note.NoteTaker.Id == user).ToList();
 
-                return View(tags);
-
-            }
-            return View();
+          
+                return View(db.tags.ToList());
+            
         }
         public ActionResult ShowTags(int id)
         {
-            var tagslist = db.tags.Where(t => t.whichNote == id);
-            return View(tagslist);
+            //var tagslist = db.tags.Where(t => t.whichNote == id);
+            var tags = db.tags.Select(c => new {
+                tag = c.tag,
+                tagId = c.tagId
+            }).ToList();
+            ViewBag.tags = new MultiSelectList(tags, "tagId", "Tag");
+
+            return View();
         }
         
         [Authorize]
@@ -44,14 +45,13 @@ namespace E_GUNLUK.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Tags t,int id)
+        public ActionResult Create(Tags t)
         {
             var userid = User.Identity.GetUserId();
             var user = db.Users.Single(u => u.Id == userid);
             var tag = new Tags
             {
-                whichNote = id,
-                tag = t.tag,               
+                tag = t.tag,            
             };
             db.tags.Add(tag);
             db.SaveChanges();
@@ -61,8 +61,6 @@ namespace E_GUNLUK.Controllers
 
         public ActionResult Edit(int? id)
         {
-            var userid = User.Identity.GetUserId();
-            var user = db.Users.Single(u => u.Id == userid);
 
             if (id == null)
             {
@@ -74,10 +72,7 @@ namespace E_GUNLUK.Controllers
             {
                 return HttpNotFound();
             }
-            else if (user != tag.Note.NoteTaker)
-            {
-                return PartialView("~/Views/Notes/NotAuthorized.cshtml", null);
-            }
+
             return View(tag);
         }
         [HttpPost]

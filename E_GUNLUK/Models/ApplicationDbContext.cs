@@ -15,7 +15,7 @@ namespace E_GUNLUK.Models
         public DbSet<Likes> likes { get; set; }
         public DbSet<FriendsList> friendsList { get; set; }
         public DbSet<Favorites> favorites { get; set; }
-
+       // public DbSet<TagsNotesRel> tagsNotesRel { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -26,5 +26,15 @@ namespace E_GUNLUK.Models
             return new ApplicationDbContext();
         }
 
+/*
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Note>()
+                .HasOptional(a => a.NoteTaker)
+                .WithOptionalDependent()
+                .WillCascadeOnDelete(true);
+        }
+*/
     }
 }
+ 

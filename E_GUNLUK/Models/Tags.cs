@@ -12,14 +12,8 @@ namespace E_GUNLUK.Models
         [Key]
         [Column(Order = 1)]
         public int tagId { get; set; }
-        [ForeignKey("Note")]
-        [Required]
-        public int whichNote { get; set; }
         [Required]
         public string tag { get; set; }
-
-        //to make equalities like tag.NoteId=model.note.id
-        public virtual Note Note { get; set; }
 
     }
 }

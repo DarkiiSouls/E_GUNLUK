@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using E_GUNLUK.Models;
 using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace E_GUNLUK.Controllers
 {
@@ -25,6 +27,7 @@ namespace E_GUNLUK.Controllers
 
                 var user = db.Users.FirstOrDefault(u => u.Id == userid);
                 var noteslist = db.notes.ToList().Where(n => n.NoteTaker == user);
+
                 return View(noteslist);
 
             }
@@ -36,8 +39,6 @@ namespace E_GUNLUK.Controllers
         {
 
             Note note = db.notes.Include(u => u.NoteTaker).SingleOrDefault(i => i.NoteId == id);
-
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -55,26 +56,38 @@ namespace E_GUNLUK.Controllers
 
         //  Notes/Create ** NEW NOTE **
         [Authorize]
+        [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            //var tagz = db.tags.ToList();
+            //var tagslist = new MultiSelectList(tagz, "tag", "tagId");
+            //ViewBag.tagss = tagslist.ToList();
+            NotesViewModel model = new NotesViewModel
+            {
+                tags_list = db.tags.ToList()
+            };
+            
+
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Note viewModel)
+        public ActionResult Create(NotesViewModel viewModel)
         {
-            var userid = User.Identity.GetUserId();
 
+            var userid = User.Identity.GetUserId();
             var user = db.Users.Single(u => u.Id == userid);
+            var tag = db.tags.Single(t => t.tagId == viewModel.selected_tag);
             var note = new Note {
                 NoteTaker = user,
                 NoteDate = DateTime.Now,
                 Title = viewModel.Title,
                 NoteText = viewModel.NoteText,
-                PubOrPvt = viewModel.PubOrPvt
+                PubOrPvt = viewModel.PubOrPvt,
+                Selected_tag = tag
+
             };
-                //ViewBag.HtmlContent = viewModel.noteviewmodel.NoteText;
                 db.notes.Add(note);
                 db.SaveChanges();
                 return RedirectToAction("Index");
