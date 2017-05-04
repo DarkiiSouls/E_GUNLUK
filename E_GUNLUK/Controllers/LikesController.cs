@@ -21,12 +21,24 @@ namespace E_GUNLUK.Controllers
         [HttpGet] //GET
         public ActionResult Like(int id)
         {
+            var the_like = db.likes.SingleOrDefault(l => l.whichNote == id);
+            ViewBag.stat = "Like";
+            if (db.likes.SingleOrDefault(l => l.whichNote == id)==null)
+            {
+                ViewBag.stat = "Like";
+            }
+            else if (the_like != null)
+            {
+                ViewBag.stat = "dislike";
+
+            }
             return View();
         }
 
         [HttpPost] //POST
         [Authorize]
         [ValidateAntiForgeryToken]
+        
         public ActionResult Like(Likes like, int id)
         {
             ViewBag.stat = "Like";

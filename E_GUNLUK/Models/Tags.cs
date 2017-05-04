@@ -15,5 +15,7 @@ namespace E_GUNLUK.Models
         [Required]
         public string tag { get; set; }
 
+        public IList<Note> Notes { get; set; }
+
     }
 }

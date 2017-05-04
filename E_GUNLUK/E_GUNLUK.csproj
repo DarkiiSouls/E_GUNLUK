@@ -201,6 +201,7 @@
     <Compile Include="Controllers\LikesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotesController.cs" />
+    <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -274,6 +275,26 @@
     <Compile Include="Migrations\201705021706571_MEH_234.Designer.cs">
       <DependentUpon>201705021706571_MEH_234.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705021943409_addedPostTagModel.cs" />
+    <Compile Include="Migrations\201705021943409_addedPostTagModel.Designer.cs">
+      <DependentUpon>201705021943409_addedPostTagModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705021944328_addedPostTagModel1.cs" />
+    <Compile Include="Migrations\201705021944328_addedPostTagModel1.Designer.cs">
+      <DependentUpon>201705021944328_addedPostTagModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705021947163_addedPostTagModel_3.cs" />
+    <Compile Include="Migrations\201705021947163_addedPostTagModel_3.Designer.cs">
+      <DependentUpon>201705021947163_addedPostTagModel_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705022050379_remoedsomestuff.cs" />
+    <Compile Include="Migrations\201705022050379_remoedsomestuff.Designer.cs">
+      <DependentUpon>201705022050379_remoedsomestuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705022141013_addedUserProfiles.cs" />
+    <Compile Include="Migrations\201705022141013_addedUserProfiles.Designer.cs">
+      <DependentUpon>201705022141013_addedUserProfiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -287,6 +308,8 @@
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\NotesCommentsViewModel.cs" />
     <Compile Include="Models\NotesViewModel.cs" />
+    <Compile Include="Models\PostTag.cs" />
+    <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Tags.cs" />
     <Compile Include="Models\TagsNotesRel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -351,6 +374,7 @@
     <Content Include="Views\Account\LoginPartial.cshtml" />
     <Content Include="Views\Comments\CommentsCounts.cshtml" />
     <Content Include="Views\Likes\LikesCounts.cshtml" />
+    <Content Include="Views\Profiles\Details.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -473,6 +497,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705021706571_MEH_234.resx">
       <DependentUpon>201705021706571_MEH_234.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705021943409_addedPostTagModel.resx">
+      <DependentUpon>201705021943409_addedPostTagModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705021944328_addedPostTagModel1.resx">
+      <DependentUpon>201705021944328_addedPostTagModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705021947163_addedPostTagModel_3.resx">
+      <DependentUpon>201705021947163_addedPostTagModel_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705022050379_remoedsomestuff.resx">
+      <DependentUpon>201705022050379_remoedsomestuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705022141013_addedUserProfiles.resx">
+      <DependentUpon>201705022141013_addedUserProfiles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

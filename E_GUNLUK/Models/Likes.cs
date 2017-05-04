@@ -15,7 +15,6 @@ namespace E_GUNLUK.Models
         [ForeignKey("Note")]
         [Required]
         public int whichNote { get; set; }
-
         //to match noteId with note.noteId
         public virtual Note Note { get; set; }
 

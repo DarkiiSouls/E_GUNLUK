@@ -26,7 +26,10 @@ namespace E_GUNLUK.Controllers
                 var userid = User.Identity.GetUserId();
 
                 var user = db.Users.FirstOrDefault(u => u.Id == userid);
-                var noteslist = db.notes.ToList().Where(n => n.NoteTaker == user);
+                var noteslist = db.notes
+                    .Include(t=>t.Selected_tag)
+                    .ToList()
+                    .Where(n => n.NoteTaker == user);
 
                 return View(noteslist);
 
@@ -38,7 +41,9 @@ namespace E_GUNLUK.Controllers
         public ActionResult Details(int? id)
         {
 
-            Note note = db.notes.Include(u => u.NoteTaker).SingleOrDefault(i => i.NoteId == id);
+            Note note = db.notes
+                .Include(u => u.NoteTaker)
+                .SingleOrDefault(i => i.NoteId == id);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -79,7 +84,8 @@ namespace E_GUNLUK.Controllers
             var userid = User.Identity.GetUserId();
             var user = db.Users.Single(u => u.Id == userid);
             var tag = db.tags.Single(t => t.tagId == viewModel.selected_tag);
-            var note = new Note {
+            var note = new Note
+            {
                 NoteTaker = user,
                 NoteDate = DateTime.Now,
                 Title = viewModel.Title,
@@ -88,11 +94,47 @@ namespace E_GUNLUK.Controllers
                 Selected_tag = tag
 
             };
-                db.notes.Add(note);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            db.notes.Add(note);
+            db.SaveChanges();
+            return RedirectToAction("Index");
 
         }
+
+        /*
+        public ActionResult Create(NotesViewModel viewModel)
+        {
+            var userid = User.Identity.GetUserId();
+            var user = db.Users.Single(u => u.Id == userid);
+            IList<Tags> _tags = new List<Tags>();
+            foreach (var item in viewModel.selected_tags)
+            {
+                var the_selected_tags = db.tags.Single(t => t.tagId == item.tagId);
+                _tags.Add(the_selected_tags);
+            }
+            var note = new Note {
+                NoteTaker = user,
+                NoteDate = DateTime.Now,
+                Title = viewModel.Title,
+                NoteText = viewModel.NoteText,
+                PubOrPvt = viewModel.PubOrPvt,
+                Selected_tags = _tags 
+            };
+            foreach (var i in _tags)
+            {
+                var ta = db.tags.Single(x => x.tagId == i.tagId);
+                var _post_tag = new PostTag
+                {
+                    tagId = ta.tagId,
+                    NoteId = note.NoteId
+                };
+                db.post_tag.Add(_post_tag);
+                db.SaveChanges();
+
+            }
+            db.notes.Add(note);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+        }*/
 
         //  Notes/Edit/id
         public ActionResult Edit(int? id)

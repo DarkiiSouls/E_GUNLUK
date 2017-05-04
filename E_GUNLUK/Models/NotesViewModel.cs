@@ -15,6 +15,7 @@ namespace E_GUNLUK.Models
         public bool PubOrPvt { get; set; }
         //public IEnumerable<Tags> Tags { get; set; }
         public IEnumerable<Tags> tags_list { get; set; }
+        // public IList<Tags> selected_tags { get; set; }
         public int selected_tag { get; set; }
         public NotesViewModel()
         {

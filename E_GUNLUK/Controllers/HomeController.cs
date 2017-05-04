@@ -19,10 +19,11 @@ namespace E_GUNLUK.Controllers
         }
         public ActionResult Index()
         {
-
-            var m = db.notes.Include(y=>y.NoteTaker);
+            var m = db.notes
+                .Include(y=>y.NoteTaker)
+                .Include(t => t.Selected_tag)
+                .Where(x=>x.PubOrPvt==false);
             return View(m.ToList());
-
         }
 
         public ActionResult About()

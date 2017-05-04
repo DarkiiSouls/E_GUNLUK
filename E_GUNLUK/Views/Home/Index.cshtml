@@ -4,7 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-
 @{
     if (Model.ToList().Count() == 0)
     {
@@ -13,32 +12,46 @@
     }
     else
     {
-        <h6>Notes Written: @Model.ToList().Count()</h6>
+        <span>Notes Written: @Model.ToList().Count()</span>
         foreach (var item in Model)
         {
             <div class="tc-ch">
                 <div class="tch-img">
                     <a href="#"><img src="~/Content/images/1.jpg" class="img-responsive" alt="" /></a>
                 </div>
-                <a class="blog blue" href="#">Technology</a>
-                <h3><a href="/Notes/Details/@item.NoteId">@Html.DisplayFor(modelItem => item.Title)</a></h3><span>Published In: @Html.DisplayFor(modelItem => item.NoteDate)| Privacy: @Html.DisplayFor(modelItem => item.PubOrPvt) | By: @Html.DisplayFor(modelItem => item.NoteTaker.Id)</span>
 
-                <p>
-                    @Html.DisplayFor(modelItem => item.NoteText)
-                </p>
+
+                @{
+                    if (item.Selected_tag.tag != null)
+                    {
+                        <a href="/Notes/Details/@item.NoteId" class="blog blue">@item.Selected_tag.tag</a>
+                    }
+                }
+
+
+
+
+
+
+                <h3><a href="/Notes/Details/@item.NoteId">@Html.DisplayFor(modelItem => item.Title)</a></h3>
+
+                <p id="text">
+                    @Html.DisplayFor(modelItem => item.NoteText)<br />
+                    <a class="" href="/Notes/Details/@item.NoteId">Keep reading</a>
+</p>
                 <div class="blog-poast-info">
                     <ul>
-                        <li><i class="glyphicon glyphicon-user"> </i><a class="admin" href="#">@item.NoteTaker.FirstName</a></li>
+                        <li><i class="glyphicon glyphicon-user"> </i><a class="admin" href="/Profiles/Details/@item.NoteTaker.Id"> @item.NoteTaker.FirstName @item.NoteTaker.LastName</a></li>
                         <li><i class="glyphicon glyphicon-calendar"> </i>@item.NoteDate</li>
-                        <li><i class="glyphicon glyphicon-comment"> </i><a class="p-blog" href="#">@Html.Action("CommentsCounts", "Comments", new { id = item.NoteId })</a></li>
+                        <li><i class="glyphicon glyphicon-comment"> </i>@Html.Action("CommentsCounts", "Comments", new { id = item.NoteId })</li>
                         <li><i class="glyphicon glyphicon-comment"> </i>@Html.Action("LikesCounts", "Likes", new { id = item.NoteId })</li>
                     </ul>
                 </div>
+
             </div>
-        }
-        <hr />
+                    }
+                    <hr />
 
 
-    }
+                    }
 }
-

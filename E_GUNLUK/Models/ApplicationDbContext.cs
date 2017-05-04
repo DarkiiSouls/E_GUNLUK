@@ -15,7 +15,9 @@ namespace E_GUNLUK.Models
         public DbSet<Likes> likes { get; set; }
         public DbSet<FriendsList> friendsList { get; set; }
         public DbSet<Favorites> favorites { get; set; }
-       // public DbSet<TagsNotesRel> tagsNotesRel { get; set; }
+        public DbSet<PostTag> post_tag { get; set; }
+        public DbSet<Profile> Profile { get; set; }
+                                           // public DbSet<TagsNotesRel> tagsNotesRel { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

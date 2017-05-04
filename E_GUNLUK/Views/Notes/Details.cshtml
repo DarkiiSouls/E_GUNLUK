@@ -18,13 +18,14 @@
     </p>
     <div class="blog-poast-info">
         <ul>
-            <li><i class="glyphicon glyphicon-user"> </i><a class="admin" href="#">@Model.NoteTaker.FirstName @Model.NoteTaker.LastName</a></li>
-            <li><i class="glyphicon glyphicon-calendar"> </i>@Model.NoteDate</li>
-            <li><i class="glyphicon glyphicon-comment"> </i><a class="p-blog" href="#">n Comments </a></li>
-            <li><i class="glyphicon glyphicon-heart"> </i><a class="admin" href="#">n favourites </a></li>
+            <li><i class="glyphicon glyphicon-user"> </i><a class="admin" href="/Profiles/Details/@Model.NoteTaker.Id"> @Model.NoteTaker.FirstName @Model.NoteTaker.LastName</a></li>
+            <li><i class="glyphicon glyphicon-calendar am_remove"> </i>@Model.NoteDate</li>
+            <li><i class="glyphicon glyphicon-comment"> </i>@Html.Action("CommentsCounts", "Comments", new { id = Model.NoteId })</li>
+            <li><i class="glyphicon glyphicon-heart"> </i>@Html.Action("LikesCounts", "Likes", new { id = Model.NoteId })</li>
         </ul>
     </div>
     @Html.Action("Like", "Likes", new { id = Model.NoteId })
+    <div class="clearfix"></div>
     </div>
 
     <h4>
@@ -36,10 +37,7 @@
 
 
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.NoteId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
 
 
 
