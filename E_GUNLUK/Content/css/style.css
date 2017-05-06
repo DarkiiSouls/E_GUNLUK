@@ -194,7 +194,7 @@ ul.nav.navbar-nav li a {
 /*--navigation--*/
 /*--banner--*/
 .banner{
-background: url(../images/banner.jpg) no-repeat 0px 0px;
+background: url(../images/banner.jpg) no-repeat 0px 0px ;
 background-size:cover;
 -webkit-background-size: cover;
 -o-background-size: cover;
@@ -1413,4 +1413,12 @@ h4.media-heading {
 }
 .am_remove{
     font-size:12px;
+}
+.bg-color-greean{
+    background-color:aquamarine;
+    height:50px;
+    width:50px;
+}
+.Friends-Notif ul li a, .Comments-Notif ul li a {
+    text-decoration:underline;
 }

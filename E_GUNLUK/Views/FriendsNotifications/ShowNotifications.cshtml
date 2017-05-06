@@ -1,0 +1,23 @@
+﻿@model IEnumerable<E_GUNLUK.Models.UserFriendNotify>
+@{
+    Layout = null;
+}
+<ul>
+    
+
+        @foreach (var item in Model)
+        {
+         
+               
+                    <li>
+                        <i class="glyphicon glyphicon-plus-sign "></i> <a href="/Profiles/Details/@item.Notification.friend.friend_user.Id">
+                            @item.Notification.friend.user.FirstName
+                            @item.Notification.friend.user.LastName
+                        </a> has added you as a friend!
+
+                        </li>
+
+        }
+
+
+</ul>

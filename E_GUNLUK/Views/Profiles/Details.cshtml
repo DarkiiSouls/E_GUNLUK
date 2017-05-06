@@ -1,11 +1,21 @@
 ﻿@model E_GUNLUK.Models.Profile
-
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = Model.FirstName + Model.LastName + "'s Profile";
-    
+
 }
 
 <div>
+    @{ 
+        if (Model.User == User.Identity.GetUserId())
+        {
+        <h6>@Html.ActionLink("Edit your profile", "Edit", "Profiles", new { id = Model.User }, null);</h6>
+        }
+        else
+        {
+            <h6>@Html.Action("AddFriend", "Profiles", new { Model.User })</h6>
+        }
+    }
     <h4>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName) 's
 Profile</h4>
     <hr />
@@ -27,5 +37,13 @@ Profile</h4>
         </dd>
 
     </dl>
+@{
+    if ( User.Identity.IsAuthenticated && Model.User == User.Identity.GetUserId())
+    {
+        Html.RenderAction("ShowFriendsList","Profiles");
+    }
+
+    Html.RenderAction("FetchPosts", "Profiles");
+}
 </div>
 

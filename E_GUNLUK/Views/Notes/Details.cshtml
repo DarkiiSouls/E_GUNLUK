@@ -14,7 +14,7 @@
     <h3><a href="/Notes/Details/@Model.NoteId">@Html.DisplayFor(modelItem => Model.Title)</a></h3><span>Published In: @Html.DisplayFor(modelItem => Model.NoteDate)| Privacy: @Html.DisplayFor(modelItem => Model.PubOrPvt) | By: @Html.DisplayFor(modelItem => Model.NoteTaker.Id)</span>
 
     <p>
-        @Html.DisplayFor(modelItem => Model.NoteText)
+        @Html.Raw(Model.NoteText)
     </p>
     <div class="blog-poast-info">
         <ul>
@@ -24,7 +24,9 @@
             <li><i class="glyphicon glyphicon-heart"> </i>@Html.Action("LikesCounts", "Likes", new { id = Model.NoteId })</li>
         </ul>
     </div>
+
     @Html.Action("Like", "Likes", new { id = Model.NoteId })
+    @Html.Action("AddToFav","Favorites", new { id = Model.NoteId})
     <div class="clearfix"></div>
     </div>
 

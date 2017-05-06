@@ -1,0 +1,21 @@
+﻿@model IEnumerable<E_GUNLUK.Models.UserCommentsNotify>
+
+@{ 
+    Layout = null;
+}
+
+<ul>
+   
+     
+        @foreach (var item in Model)
+        {
+
+           
+                <li>
+                   <i class="glyphicon glyphicon-comment"></i>
+                    @item.Notification.Comment.commentator.FirstName has commented on your  <a href="/Notes/Details/@item.Notification.Comment.whichNote">Post</a> 
+                </li>
+            
+        }
+    
+</ul>

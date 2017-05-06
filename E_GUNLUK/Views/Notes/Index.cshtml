@@ -36,7 +36,8 @@
 <h3><a href="/Notes/Details/@item.NoteId">@Html.DisplayFor(modelItem => item.Title)</a></h3>
 
                 <p id="text">
-                    @Html.DisplayFor(modelItem => item.NoteText)<br />
+                            @Html.Raw(item.NoteText)
+<br />
                     <a class="" href="/Notes/Details/@item.NoteId">Keep reading</a>
                 </p>
 <div class="blog-poast-info">

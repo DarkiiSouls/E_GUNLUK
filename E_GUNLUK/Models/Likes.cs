@@ -9,7 +9,6 @@ namespace E_GUNLUK.Models
 {
     public class Likes
     {
-        
         public  ApplicationUser user { get; set; }
         [Key]
         [ForeignKey("Note")]

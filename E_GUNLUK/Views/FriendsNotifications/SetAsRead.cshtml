@@ -1,0 +1,15 @@
+﻿@model E_GUNLUK.Models.UserFriendNotify
+
+@{ 
+    Layout = null;
+}
+
+
+@using (Html.BeginForm("SetAsRead", "FriendsNotifications", FormMethod.Post, new { id = "SetAsRead-btn", @class = "like-btn" }))
+
+{
+    
+    <a class="" href="javascript:document.getElementById('SetAsRead-btn').submit()">
+        <i class="glyphicon glyphicon-Ok"></i>
+    </a>
+}

@@ -17,6 +17,5 @@ namespace E_GUNLUK.Models
 
         //to match noteId with note.noteId
         public virtual Note Note { get; set; }
-
     }
 }

@@ -47,7 +47,22 @@ namespace E_GUNLUK.Controllers
                 whichNote = id
             };                      
                 db.comments.Add(comment);
-                db.SaveChanges();
+            var notification = new CommentsNotifications
+            {
+                NotifyDate = DateTime.Now,
+                Comment = comment
+            };
+            var findnote = db.notes.Include(X=>X.NoteTaker).SingleOrDefault(n=>n.NoteId== comment.whichNote);
+            var noter = findnote.NoteTaker.Id;
+            var msg_receiver = db.Users.SingleOrDefault(m => m.Id == noter);
+            var userCmntNot = new UserCommentsNotify
+            {
+                Notification = notification,
+                User = msg_receiver,
+
+            };
+            db.UserCommentsNotify.Add(userCmntNot);
+            db.SaveChanges();
                 return RedirectToAction("Details", "Notes", new { id = id });
         }
 

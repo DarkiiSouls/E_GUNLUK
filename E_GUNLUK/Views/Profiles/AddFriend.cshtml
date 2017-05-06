@@ -1,0 +1,15 @@
+﻿@model E_GUNLUK.Models.Likes
+@{
+    Layout = null;
+}
+
+
+
+@using (@Html.BeginForm("AddFriend", "Profiles", FormMethod.Post, new { id = "Like-btn", @class = "like-btn" }))
+
+{
+    @Html.AntiForgeryToken()
+    <a class="btn btn-default" href="javascript:document.getElementById('Like-btn').submit()">
+        <i class="glyphicon glyphicon-heart"></i>&nbsp;@ViewBag.stat
+    </a>
+}

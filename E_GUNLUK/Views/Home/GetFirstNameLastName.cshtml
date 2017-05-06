@@ -1,0 +1,11 @@
+﻿@model E_GUNLUK.Models.ApplicationUser
+
+@{ 
+    Layout = null;
+
+}
+@if (Model==null)
+{
+    return;
+}
+@Model.FirstName @Model.LastName

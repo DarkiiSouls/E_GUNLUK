@@ -1,0 +1,15 @@
+﻿@model IEnumerable<E_GUNLUK.Models.Note>
+@{ 
+   Layout = null;
+}
+
+
+@foreach (var item in Model) {
+
+
+<div class="blog-grid-right">
+
+    <h5><a href="/Notes/Details/@item.NoteId">@Html.DisplayFor(modelItem => item.Title)</a></h5>
+</div>
+<div class="clearfix"> </div>
+}

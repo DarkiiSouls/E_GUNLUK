@@ -78,6 +78,7 @@ namespace E_GUNLUK.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(NotesViewModel viewModel)
         {
 
@@ -163,6 +164,7 @@ namespace E_GUNLUK.Controllers
         // POST: Notes/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "NoteId,Title,NoteText,PubOrPvt")] Note note)
         {
             if (ModelState.IsValid)

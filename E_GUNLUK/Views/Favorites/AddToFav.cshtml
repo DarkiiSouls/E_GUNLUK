@@ -1,0 +1,50 @@
+﻿@model E_GUNLUK.Models.Favorites
+
+@{ 
+    Layout = null;
+
+}
+
+@{
+/*
+
+ <div class="" id="target">
+@using (Ajax.BeginForm("AddToFav", "Home",
+            new AjaxOptions
+            {
+                HttpMethod = "POST",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "target"
+            }))
+{
+
+        if (Model == null)
+            {
+                <a class="btn btn-default" href="">Fav<</a>
+    }
+    else if (Model != null)
+    {
+        <a class="btn btn-default" href="">Unfav<</a>
+
+    }
+
+
+
+}
+     </div>        }
+ */
+
+}
+
+
+
+   
+    @using (Html.BeginForm("AddToFav", "Favorites", FormMethod.Post, new { id = "Fav-btn", @class = "like-btn" }))
+
+    {
+        @Html.AntiForgeryToken()
+        <a class="btn btn-default" href="javascript:document.getElementById('Fav-btn').submit()">
+            <i class="glyphicon glyphicon-star"></i>&nbsp;@ViewBag.favStat</a>
+    }
+
+ 

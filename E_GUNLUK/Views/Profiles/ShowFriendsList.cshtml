@@ -1,0 +1,23 @@
+﻿@model IEnumerable<E_GUNLUK.Models.FriendsList>
+
+
+@{ 
+    Layout = null;
+}
+
+@if (Model.Count() == 0)
+{
+    return;
+}
+else { 
+<h3>Friends List [@Model.Count()]</h3>
+<ul>
+    @foreach (var item in Model)
+    {
+        
+
+        <li><a href="/Profiles/Details/@item.friend_user.Id">@item.friend_user.FirstName @item.friend_user.LastName</a>| <span>@Html.Action("AddFriend", "Profiles", new { item.friend_user.Id})</span>
+</li>
+    }
+</ul>
+}

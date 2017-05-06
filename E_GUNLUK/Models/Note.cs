@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace E_GUNLUK.Models
 {
@@ -17,6 +18,7 @@ namespace E_GUNLUK.Models
         public int NoteId { get; set; }
         public string Title { get; set; }
         [Required]
+        [AllowHtml]
         public string NoteText { get; set; }
         [Required]
         public DateTime NoteDate { get; set; }

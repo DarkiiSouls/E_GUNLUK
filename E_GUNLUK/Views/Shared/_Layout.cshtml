@@ -1,4 +1,5 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
+@using E_GUNLUK.Models
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -17,6 +18,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="~/Content/css/style.css" rel='stylesheet' type='text/css' />
     <script src="~/Content/js/jquery-1.11.1.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    @Scripts.Render("~/Bundles/ckeditor")
     <style>
         #text {
             width: 550px;
@@ -67,16 +72,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li></li>
+                        <li>@Html.ActionLink("News Feed", "Index", "Home")</li>
+                        
+                        <li>@Html.ActionLink("Friends Feed", "FriendsFeed", "Home")</li>
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notes <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("My Notes", "Index", "Notes")</li>
-                                <li>@Html.ActionLink("New Note", "Create", "Notes")</li>
-                                <li><a href="singlepage.html">Action</a></li>
+                                <li>@Html.ActionLink("Add new Note", "Create", "Notes")</li>
                             </ul>
                         </li>
+                        
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Personal <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("My Profile", "Details", "Profiles", new { id = User.Identity.GetUserId() }, null)</li>
+                                        <li>@Html.ActionLink("Notifications", "ShowAllNotifications", "Home")</li>
+                                    </ul>
+
+                                </li>
+                            }
+           
                         @{
                             if (User.IsInRole("Admin"))
                             {
@@ -84,6 +103,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <li>@Html.ActionLink("Manage Tags", "Index", "Tags")</li>
                             }
                         }
+
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -134,57 +154,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="blo-top1">
                     <div class="tech-btm">
-                        <h4>Top stories of the week </h4>
+                        <h4>Top stories </h4>
                         <div class="blog-grids">
-                            <div class="blog-grid-left">
-                                <a href="singlepage.html"><img src="~/Content/images/6.jpg" class="img-responsive" alt="" /></a>
-                            </div>
-                            <div class="blog-grid-right">
-
-                                <h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
-                            </div>
-                            <div class="clearfix"> </div>
+                            @Html.Action("TopStories","Home")
                         </div>
-                        <div class="blog-grids">
-                            <div class="blog-grid-left">
-                                <a href="singlepage.html"><img src="~/Content/images/7.jpg" class="img-responsive" alt="" /></a>
-                            </div>
-                            <div class="blog-grid-right">
 
-                                <h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <div class="blog-grids">
-                            <div class="blog-grid-left">
-                                <a href="singlepage.html"><img src="~/Content/images/11.jpg" class="img-responsive" alt="" /></a>
-                            </div>
-                            <div class="blog-grid-right">
+       
 
-                                <h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <div class="blog-grids">
-                            <div class="blog-grid-left">
-                                <a href="singlepage.html"><img src="~/Content/images/9.jpg" class="img-responsive" alt="" /></a>
-                            </div>
-                            <div class="blog-grid-right">
-
-                                <h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <div class="blog-grids">
-                            <div class="blog-grid-left">
-                                <a href="singlepage.html"><img src="~/Content/images/10.jpg" class="img-responsive" alt="" /></a>
-                            </div>
-                            <div class="blog-grid-right">
-
-                                <h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
+      
                     </div>
                 </div>
 
@@ -199,8 +176,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <p>© 2016 Business_Blog. All rights reserved | Template by <a href="http://www.zeyosoft.com">Zeyosoft</a></p>
         </div>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
+
+
+
+
 </body>
 </html>

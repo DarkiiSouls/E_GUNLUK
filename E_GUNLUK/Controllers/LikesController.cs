@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 using System.Web.Mvc;
 
 namespace E_GUNLUK.Controllers
@@ -21,16 +22,23 @@ namespace E_GUNLUK.Controllers
         [HttpGet] //GET
         public ActionResult Like(int id)
         {
-            var the_like = db.likes.SingleOrDefault(l => l.whichNote == id);
+            if (User.Identity.IsAuthenticated)
+            {
+                var userid = User.Identity.GetUserId();
+                var user = db.Users.Single(u => u.Id == userid);
+
+            
+            var the_like = db.likes.SingleOrDefault(l => l.whichNote == id && l.user.Id==user.Id);
             ViewBag.stat = "Like";
-            if (db.likes.SingleOrDefault(l => l.whichNote == id)==null)
+            if (the_like == null || the_like.user!=user)
             {
                 ViewBag.stat = "Like";
             }
-            else if (the_like != null)
+            else if (the_like != null || the_like.user == user)
             {
                 ViewBag.stat = "dislike";
 
+            }
             }
             return View();
         }
@@ -52,7 +60,7 @@ namespace E_GUNLUK.Controllers
             if (checker_like == null)
             {
                 //ViewBag.stat = "Like";
-                db.likes.Add(like_var);
+                db.likes.Add(like_var);       
                 db.SaveChanges();
                 return RedirectToAction("Details","Notes", new { id = id });
             }
